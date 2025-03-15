@@ -1,8 +1,11 @@
-version: 0.2
+version: 0.3
+env:
+  secrets-manager:
+    TOKEN: forcedSecret:tokenForSonar
 phases:
   install:
     runtime-versions:
       java: latest
   build:
     commands:
-        - mvn verify sonar:sonar -Dsonar.projectKey=awscourseproject1 -Dsonar.organization=awscourseproject -Dsonar.host.url=http://sonarcloud.io -Dsonar.login=3ca6bf22c524f565865dc653ff6642b0637467b7
+        - mvn verify sonar:sonar -Dsonar.projectKey=awscourseproject1 -Dsonar.organization=awscourseproject -Dsonar.host.url=http://sonarcloud.io -Dsonar.login=$TOKEN
